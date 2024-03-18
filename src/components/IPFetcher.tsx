@@ -26,6 +26,7 @@ export const IPFetcher: React.FC<IPFetcherProps> = ({ ip }) => {
     const [result, setResult] = useState<IPFetcherResult | null>(null);
     const [error, setError] = useState<Error | null>(null);
     useEffect(() => {
+        setError(null);
         fetch(`https://ipinfo.io/${ip}/geo`, {
         method: "GET",
         headers: {
