@@ -33,14 +33,21 @@ export const IPFetcher: React.FC<IPFetcherProps> = ({ ip }) => {
             "Content-Type": "application/json",
         }
     })
-    .then((response) => {console.log(response); return response.json()})
+    .then((response) => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    
+    })
     .then((data) => {
         console.log(data);
         setResult(data);
     })
     .catch((error) => {
-        console.error(error);
-        setError(error);
+        <div>
+            {error.message}
+        </div>
     });
     }, [ip]);
 return (

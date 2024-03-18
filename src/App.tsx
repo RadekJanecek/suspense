@@ -6,10 +6,14 @@ import { Suspense } from 'react'
 function App() {
 
   return (
-    <Suspense fallback={<p>Loading ...</p>}>
-      <IPFetcher ip="37.205.13.13" />
-      <DelayDisplay />
-    </Suspense>
+    <>
+      <Suspense fallback={<p>Loading ...</p>}>
+        <IPFetcher ip="37.205.13.13" />
+      </Suspense>
+      <Suspense fallback={<p>loooooading ...</p>}>
+        <DelayDisplay />
+      </Suspense>
+    </>	
   )
 }
 
