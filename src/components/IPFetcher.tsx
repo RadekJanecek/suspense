@@ -29,7 +29,7 @@ export const IPFetcher: React.FC<IPFetcherProps> = ({ ip }) => {
         fetch(`https://ipinfo.io/${ip}/geo`, {
         method: "GET",
         headers: {
-            "Accept": "application/json"
+            "Content-Type": "application/json",
         }
     })
     .then((response) => {console.log(response); return response.json()})
@@ -47,6 +47,24 @@ return (
         <pre>
             {JSON.stringify(result, null, 2)}
         </pre>
+        <dl>
+            <dt>IP</dt>
+            <dd>{result?.ip}</dd>
+            <dt>City</dt>
+            <dd>{result?.city}</dd>
+            <dt>Region</dt>
+            <dd>{result?.region}</dd>
+            <dt>Country</dt>
+            <dd>{result?.country}</dd>
+            <dt>Location</dt>
+            <dd>{result?.loc}</dd>
+            <dt>Organization</dt>
+            <dd>{result?.org}</dd>
+            <dt>Postal</dt>
+            <dd>{result?.postal}</dd>
+            <dt>Timezone</dt>
+            <dd>{result?.timezone}</dd>
+        </dl>
     </div>
 );
 };
